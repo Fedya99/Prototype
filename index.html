@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo(name){
+    this.name = name;
+}
+ foo.prototype.myName = function(){
+     return this.name
+ }
+ function bar(name, swim, talk){
+     foo.call(this,name);
+     this.swim = swim;
+     this.talk = talk;
+ }
+ bar.prototype.canSwim = function(){
+    return this.swim
+     }
+ bar.prototype = Object.create(foo.prototype);
+  var samsung = new bar('Samsung', 'Yes', 'Yes')
+  var nokia = new bar('Nokia', 'No', 'Yes')
+  console.log(samsung);
+  console.log(nokia);
+    </script>
+</body>
+</html>
